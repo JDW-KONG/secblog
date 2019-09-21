@@ -1,0 +1,534 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="http://localhost:4000/security/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/security/" rel="alternate" type="text/html" /><updated>2019-09-19T19:53:35-04:00</updated><id>http://localhost:4000/security/feed.xml</id><title type="html">Justin On Security</title><subtitle>A security and system administration blog.</subtitle><author><name>Justin Walters</name></author><entry><title type="html">Disk Encryption Attacks</title><link href="http://localhost:4000/security/disk/encryption/attacks/disk-encryption-attacks/" rel="alternate" type="text/html" title="Disk Encryption Attacks" /><published>2019-09-19T15:27:36-04:00</published><updated>2019-09-19T15:27:36-04:00</updated><id>http://localhost:4000/security/disk/encryption/attacks/disk-encryption-attacks</id><content type="html" xml:base="http://localhost:4000/security/disk/encryption/attacks/disk-encryption-attacks/">&lt;p&gt;A study guide describing disk encryption attack and defense methods.&lt;/p&gt;
+
+&lt;h3 id=&quot;breaking-cryptoalgorithms-and-brute-force-attacks&quot;&gt;Breaking Cryptoalgorithms and Brute Force Attacks&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;cascade encryption options to make decryption more difficult&lt;/li&gt;
+  &lt;li&gt;brute force attacks are currently the most viable strategy&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://resources.infosecinstitute.com/popular-tools-for-brute-force-attacks/&quot;&gt;Popular Tools for Brute Force&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.howtogeek.com/166832/brute-force-attacks-explained-how-all-encryption-is-vulnerable/&quot;&gt;Brute Force Attacks Explained&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://articles.forensicfocus.com/2018/02/22/bruteforcing-linux-full-disk-encryption-luks-with-hashcat/&quot;&gt;Brute Forcing Linux Full Disk Encryption with Hashcat&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;cryptography-vs-quantum-computers&quot;&gt;Cryptography vs. Quantum Computers&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;cracking symmetric algorithms
+    &lt;ul&gt;
+      &lt;li&gt;128-bit keys can be broken on a supercomputer&lt;/li&gt;
+      &lt;li&gt;256-bit keys provide future protection from quantum computers&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;current asymmetric algorithms will eventually need to be replaced&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://youtu.be/6H_9l9N3IXU&quot;&gt;Will Quantum Computers Break Encryption?&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://youtu.be/lvTqbM5Dq4Q&quot;&gt;How Quantum Computers Break Encryption&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.zdnet.com/article/ibm-warns-of-instant-breaking-of-encryption-by-quantum-computers-move-your-data-today/&quot;&gt;IBM Warns of Instant Breaking of Encryption by Quantum Computers&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;general-vulnerabilities&quot;&gt;General Vulnerabilities&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;encryption is hard to get right
+    &lt;ul&gt;
+      &lt;li&gt;it must be arduously tested&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;open source options allow users to scrutinize and update code&lt;/li&gt;
+  &lt;li&gt;prone to configuration issues
+    &lt;ul&gt;
+      &lt;li&gt;encryption software is easy to misconfigure&lt;/li&gt;
+      &lt;li&gt;can create vulnerabilities&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;consider nation state backdoors and implementation weakening&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.sciencedirect.com/topics/computer-science/full-disk-encryption&quot;&gt;ScienceDirect - Full Disk Encryption&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.infosecurity-magazine.com/magazine-features/tales-crypt-hardware-software/&quot;&gt;Tales from the Crypt: Hardware vs. Software&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;software-based-attacks&quot;&gt;Software Based Attacks&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;bad design can result in private info being stored in easily accessible areas
+    &lt;ul&gt;
+      &lt;li&gt;there are many attacks we are unaware of&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;physical-attacks-on-disk-encryption&quot;&gt;Physical Attacks On Disk Encryption&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;hardware keyloggers&lt;/li&gt;
+  &lt;li&gt;firmware rootkits&lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;spying/shoulder surfing&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;mitigating physical threats
+    &lt;ul&gt;
+      &lt;li&gt;keep your adversaries away from your devices&lt;/li&gt;
+      &lt;li&gt;conceal your device&lt;/li&gt;
+      &lt;li&gt;completely power down your device&lt;/li&gt;
+      &lt;li&gt;always keep your device with you&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://elie.net/blog/privacy/ten-simple-steps-for-keeping-your-laptop-secure/&quot;&gt;Ten Simple Steps for Keeping Your Laptop Secure&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.sans.org/reading-room/whitepapers/physical/hardware-keyloggers-37125&quot;&gt;Hardware Keyloggers&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://nerdtechy.com/reviews-best-usb-keyloggers&quot;&gt;Reviews of the Best USB Keyloggers&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://youtu.be/0LvF0KtBWxY&quot;&gt;Rootkits As Fast As Possible&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://youtu.be/gLKeYf2zLCQ&quot;&gt;Shoulder Surfing&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;https://youtu.be/nyl-Ksc5XG4&quot;&gt;Shoulder Surfing from a Distance&lt;/a&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://guides.codepath.com/websecurity/DMA-Attack&quot;&gt;DMA - Direct Memory Access Attacks&lt;/a&gt;
+    &lt;ul&gt;
+      &lt;li&gt;ports that support DMA:
+        &lt;ul&gt;
+          &lt;li&gt;PCI&lt;/li&gt;
+          &lt;li&gt;PCI express&lt;/li&gt;
+          &lt;li&gt;firewire&lt;/li&gt;
+          &lt;li&gt;thunderbolt&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;if a user gains access to these ports he may be able to obtain your key
+        &lt;ul&gt;
+          &lt;li&gt;can also inject commands to the OS&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;github: inception - allows DMA attacks&lt;/li&gt;
+      &lt;li&gt;Passware Kit Enterprise
+        &lt;ul&gt;
+          &lt;li&gt;can decrypt disks encrypted with BitLocker, TrueCrypt, FileVault2, or PGP&lt;/li&gt;
+          &lt;li&gt;$1000&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;WindowsSCOPE Phantom Probe USB Dongle
+        &lt;ul&gt;
+          &lt;li&gt;USB dongle that captures memory screenshot&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;https://www.synacktiv.com/posts/pentest/practical-dma-attack-on-windows-10.html&quot;&gt;Practical DMA Attack on Windows 10&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;https://youtu.be/L8nLeQWONSQ&quot;&gt;PrivateCore PCI DMA Attack&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;https://youtu.be/fXthwl6ShOg&quot;&gt;Direct Memory Attack the Kernel&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;https://github.com/ufrisk/pcileech&quot;&gt;PCILeech&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;https://youtu.be/MIfY8g73xms&quot;&gt;PCILeech - Ulf Fritz interview&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;https://youtu.be/HDhpy7RpUjM&quot;&gt;Why You Should Not Leave Your Computer Unsupervised&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;https://github.com/carmaa/inception&quot;&gt;Inception&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Direct Memory Access Mitigations
+    &lt;ul&gt;
+      &lt;li&gt;MAC OSX 10.7.2/Windows 8.1 and newer
+        &lt;ul&gt;
+          &lt;li&gt;DMA is disabled when the user has locked the OS
+            &lt;ul&gt;
+              &lt;li&gt;prevents firmware DMA attacks&lt;/li&gt;
+            &lt;/ul&gt;
+          &lt;/li&gt;
+          &lt;li&gt;DMA attacks still work while the user is logged on&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;Windows 10
+        &lt;ul&gt;
+          &lt;li&gt;OS has DMA port protection&lt;/li&gt;
+          &lt;li&gt;can use DataProtection/AllowDirectMemoryAccess MDM policy to block DMA ports at startup&lt;/li&gt;
+          &lt;li&gt;makes DMA attacks more difficult&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;Macs Newer than 2012
+        &lt;ul&gt;
+          &lt;li&gt;enable VT-D
+            &lt;ul&gt;
+              &lt;li&gt;blocks DMA requests&lt;/li&gt;
+            &lt;/ul&gt;
+          &lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;Qubes OS
+        &lt;ul&gt;
+          &lt;li&gt;provides protection against DMA attacks&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;https://en.wikipedia.org/wiki/DMA_attack#Mitigations&quot;&gt;DMA Attack Mitigation&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;https://www.csoonline.com/article/2607924/stop-sneaky-hackers-from-launching-dma-attacks.html&quot;&gt;Stop DMA Attacks&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;https://security.stackexchange.com/questions/88629/preventing-dma-attacks&quot;&gt;Preventing DMA Attacks&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;https://software.intel.com/en-us/articles/intel-virtualization-technology-for-directed-io-vt-d-enhancing-intel-platforms-for-efficient-virtualization-of-io-devices&quot;&gt;Intel Virtualization Technology&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;bootkey-problem&quot;&gt;BootKey Problem&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;the blocks where the OS is stored must be decrypted before the OS can boot
+    &lt;ul&gt;
+      &lt;li&gt;the key must be available before there is a user interface to ask for the password
+        &lt;ul&gt;
+          &lt;li&gt;provides an attack surface&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;most disk encryption options offer pre-boot authentication
+        &lt;ul&gt;
+          &lt;li&gt;pre-boot environment can be swapped with a less secure option&lt;/li&gt;
+          &lt;li&gt;BootKits can be used to circumvent the pre-boot&lt;/li&gt;
+          &lt;li&gt;the key cannot be decrypted until an external key is input&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;LUKS and BitLocker can use hardware for encryption
+        &lt;ul&gt;
+          &lt;li&gt;TPM - Trusted Platform Module
+            &lt;ul&gt;
+              &lt;li&gt;ensures the integrity of the boot environment&lt;/li&gt;
+              &lt;li&gt;mitigates attacks that attempt to replace the bootloader with a modified version&lt;/li&gt;
+            &lt;/ul&gt;
+          &lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;Cold Boot Attack
+        &lt;ul&gt;
+          &lt;li&gt;provides a means to obtain a dump of the computer’s memory
+            &lt;ul&gt;
+              &lt;li&gt;memory can be reconstructed to reveal the key&lt;/li&gt;
+            &lt;/ul&gt;
+          &lt;/li&gt;
+          &lt;li&gt;a can of duster is used to freeze the memory for longer data retention
+            &lt;ul&gt;
+              &lt;li&gt;memory stays accessible for a short time after shutdown&lt;/li&gt;
+              &lt;li&gt;the memory is removed and placed into another machine where it is dumped&lt;/li&gt;
+            &lt;/ul&gt;
+          &lt;/li&gt;
+          &lt;li&gt;works on DDR1, DDR2, and DDR3 ram&lt;/li&gt;
+          &lt;li&gt;the boot partitions cannot be encrypted with the software implementations of disk encryption
+            &lt;ul&gt;
+              &lt;li&gt;BitLocker needs an unencrypted volume to boot from&lt;/li&gt;
+            &lt;/ul&gt;
+          &lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;https://en.wikipedia.org/wiki/Pre-boot_authentication&quot;&gt;Pre-boot Authentication&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;https://docs.microsoft.com/en-us/windows/security/information-protection/bitlocker/bitlocker-countermeasures&quot;&gt;BitLocker Countermeasurers&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;https://www.winmagic.com/blog/microsoft-preboot-authenticate-not-necessary/&quot;&gt;Does Microsoft Claim Pre-boot Authentication is Not Necessary?&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;https://attack.mitre.org/techniques/T1067/&quot;&gt;Bootkit&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;https://www.secjuice.com/attacking-encryption-systems/&quot;&gt;Attacking Encryption Systems&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;https://en.wikipedia.org/wiki/Trusted_Platform_Module&quot;&gt;TPM - Trusted Platform Module&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;https://youtu.be/Ej-Nr79bVjg&quot;&gt;Cold Boot Attacks On Encryption Keys&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;https://youtu.be/E6gzVVjW4yY&quot;&gt;The Chilling Reality of Cold Boot Attacks&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;evil-maid-attack&quot;&gt;Evil Maid Attack&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;attacker boots device using a live CD/USB and changes the bootloader to a hacked version&lt;/li&gt;
+  &lt;li&gt;hacked bootloader will save the key and send to attackers&lt;/li&gt;
+  &lt;li&gt;if the bootloader is compromised, the entire system is compromised&lt;/li&gt;
+  &lt;li&gt;Knowledgeable Evil Maid Attack
+    &lt;ul&gt;
+      &lt;li&gt;adversary with physical access to the machine and knowledge of the where specific files are located on the disk&lt;/li&gt;
+      &lt;li&gt;files can be modified to allow changes to the OS&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://youtu.be/0uRxRIJc8zU&quot;&gt;The Evil Maid Attack&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://youtu.be/DdHK0TOJp98&quot;&gt;Defend Your MacOS Computer from Malware and Evil Maid Attacks&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://en.wikipedia.org/wiki/Evil_maid_attack&quot;&gt;Evil Maid Attack - Wikipedia&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://blog.f-secure.com/f-secures-guide-to-evil-maid-attacks/&quot;&gt;F-Secure’s Guide to Evil Maid Attacks&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;other-hardware-attacks&quot;&gt;Other Hardware Attacks&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;remove storage, place storage unit in similar device with hacked bootloader&lt;/li&gt;
+  &lt;li&gt;modified hardware may be installed to capture input
+    &lt;ul&gt;
+      &lt;li&gt;hardware keyloggers, bus mastering device capturing memory, firmware rootkits&lt;/li&gt;
+      &lt;li&gt;hotswapping drives and cables&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://resources.infosecinstitute.com/hardware-attacks-backdoors-and-electronic-component-qualification/&quot;&gt;Hardware Attacks, Backdoors and Electronic Component Qualification&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.darkreading.com/vulnerabilities---threats/hardware-cyberattacks-how-worried-should-you-be/d/d-id/1333167&quot;&gt;Hardware Cyberattacks: How Worried Should You Be?&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://eclypsium.com/2018/12/28/the-top-5-firmware-and-hardware-attack-vectors/&quot;&gt;Top 5 Firmware and Hardware Attack Vectors&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;attacks-on-encrypted-containers-volumes-and-partitions&quot;&gt;Attacks On Encrypted Containers, Volumes, and Partitions&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;increased attack surface compared to full disk encryption&lt;/li&gt;
+  &lt;li&gt;most attacks still apply&lt;/li&gt;
+  &lt;li&gt;may fail to encrypt private files&lt;/li&gt;
+  &lt;li&gt;opt for whole disk encryption&lt;/li&gt;
+  &lt;li&gt;containers allow us to have multiple levels of security&lt;/li&gt;
+  &lt;li&gt;containers do not contain any signature of encryption
+    &lt;ul&gt;
+      &lt;li&gt;may allow for plausible deniability&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;use VeraCrypt for encrypted containers
+    &lt;ul&gt;
+      &lt;li&gt;Windows, Mac and Linux&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://youtu.be/LMM90jFG30M&quot;&gt;How to Use VeraCrypt Containers to Secure Your Data&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;defense-against-disk-decryption-attacks&quot;&gt;Defense Against Disk Decryption Attacks&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;prevent physical access to your device
+    &lt;ul&gt;
+      &lt;li&gt;hide your device&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;setup alerts to notify you of tampering
+    &lt;ul&gt;
+      &lt;li&gt;set up subtle traps to detect tampering&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;do not use the device if you suspect that it has been tampered with&lt;/li&gt;
+  &lt;li&gt;do not leave your device unattended and unlocked
+    &lt;ul&gt;
+      &lt;li&gt;consider powering down your device when you are not near&lt;/li&gt;
+      &lt;li&gt;bring your device with you&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;disable ports that support DMA
+    &lt;ul&gt;
+      &lt;li&gt;PCI&lt;/li&gt;
+      &lt;li&gt;PCI Express&lt;/li&gt;
+      &lt;li&gt;FireWire&lt;/li&gt;
+      &lt;li&gt;Thunderbolt&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;use full disk encryption&lt;/li&gt;
+  &lt;li&gt;use pre-boot authentication
+    &lt;ul&gt;
+      &lt;li&gt;use multifactor authentication if possible&lt;/li&gt;
+      &lt;li&gt;tokens and keys&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;encrypt bootloader or place on usb&lt;/li&gt;
+  &lt;li&gt;use secure boot and tpm where available&lt;/li&gt;
+  &lt;li&gt;avoid SSD drives&lt;/li&gt;
+  &lt;li&gt;don’t put sensitive data on the device until the device is encrypted
+    &lt;ul&gt;
+      &lt;li&gt;always encrypt first&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;make your memory hard to remove from your system
+    &lt;ul&gt;
+      &lt;li&gt;tape, superglue, etc.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;enable POST in BIOS
+    &lt;ul&gt;
+      &lt;li&gt;mitigates cold boot attacks by overwriting RAM&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;use a BIOS password&lt;/li&gt;
+  &lt;li&gt;disable sleep and hibernation
+    &lt;ul&gt;
+      &lt;li&gt;delete hiberfil.sys&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;find where your OS dumps memory and disable memory dumps&lt;/li&gt;
+  &lt;li&gt;swap files may contain sensitive information
+    &lt;ul&gt;
+      &lt;li&gt;encrypt your swap&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;read the VeraCrypt documentation&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://looseleafsecurity.com/episodes/physical-attacks-to-your-computers-and-disk-encryption.html&quot;&gt;Physical Attacks to Your Computers and Disk Encryption&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.computerweekly.com/tip/Laptop-security-tips-The-physical-perspective&quot;&gt;Laptop Security Tips&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;additional-resources&quot;&gt;Additional Resources&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;The clock is ticking for encryption
+    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;https://www.csoonline.com/article/2127865/the-clock-is-ticking-for-encryption.amp.html&quot;&gt;https://www.csoonline.com/article/2127865/the-clock-is-ticking-for-encryption.amp.html&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;</content><author><name>Justin Walters</name></author><summary type="html">A study guide describing disk encryption attack and defense methods.</summary></entry><entry><title type="html">File and Disk Encryption</title><link href="http://localhost:4000/security/disk/encryption/file/security/disk-and-file-encryption/" rel="alternate" type="text/html" title="File and Disk Encryption" /><published>2019-09-18T23:39:36-04:00</published><updated>2019-09-18T23:39:36-04:00</updated><id>http://localhost:4000/security/disk/encryption/file/security/disk-and-file-encryption</id><content type="html" xml:base="http://localhost:4000/security/disk/encryption/file/security/disk-and-file-encryption/">&lt;p&gt;A study guide introducing readers to file and disk encryption.&lt;/p&gt;
+
+&lt;h3 id=&quot;what-is-disk-encryption-good-for&quot;&gt;What is Disk Encryption Good for?&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;protects data by converting it into an unreadable format
+    &lt;ul&gt;
+      &lt;li&gt;restricts access to only certain users&lt;/li&gt;
+      &lt;li&gt;offers cryptographic protection of data on multiple mediums&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://theintercept.com/2015/04/27/encrypting-laptop-like-mean/&quot;&gt;Encrypting Your Laptop Like You Mean It&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://youtu.be/0NfvKci3WF0&quot;&gt;Drive Encryption: Your Computer is at Risk&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://youtu.be/clWEKq8CVOk&quot;&gt;How Does Encryption Work?&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://heimdalsecurity.com/blog/free-encryption-software-tools/&quot;&gt;What is Data Encryption?&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://youtu.be/12pQG8sHILY&quot;&gt;Should You Encrypt Your Computer’s Hard Drive?&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://youtu.be/_rBA4xRj5sY&quot;&gt;Disk Encryption: Why You Still Need It&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;software-based-disk-encryption&quot;&gt;Software Based Disk Encryption&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://wiki.archlinux.org/index.php/dm-crypt&quot;&gt;dm-crypt&lt;/a&gt; and &lt;a href=&quot;https://gitlab.com/cryptsetup/cryptsetup/&quot;&gt;LUKS: Linux Unified Key Setup&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.veracrypt.fr/en/Home.html&quot;&gt;VeraCrypt&lt;/a&gt; - Windows, MacOS, and Linux&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://support.apple.com/en-us/HT204837&quot;&gt;FileVault2&lt;/a&gt; - MacOS&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://docs.microsoft.com/en-us/windows/security/information-protection/bitlocker/bitlocker-overview&quot;&gt;Bitlocker&lt;/a&gt; - Windows&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.pcmag.com/article/347066/the-best-encryption-software&quot;&gt;The Best Encryption Software for 2019&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;hardware-based-disk-encryption&quot;&gt;Hardware Based Disk Encryption&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;SED : &lt;a href=&quot;https://youtu.be/sxfuCmzE5Ok&quot;&gt;Self Encrypting Drives&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;some SSDs come with hardware encryption
+    &lt;ul&gt;
+      &lt;li&gt;always use a password&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;can be effective when combined with other forms of encryption&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://youtu.be/sxfuCmzE5Ok&quot;&gt;Understanding Hardware Based Encryption&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.pcworld.com/article/3004670/self-encrypting-drives-are-hardly-any-better-than-software-based-encryption.html&quot;&gt;Self Encrypting Drives are Hardly Any Better Than Software-Based Encryption&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.zdnet.com/article/flaws-in-self-encrypting-ssds-let-attackers-bypass-disk-encryption/&quot;&gt;Flaws in Self Encrypting SSDs Let Attackers Bypass Disk Encryption&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.blackhat.com/docs/eu-15/materials/eu-15-Boteanu-Bypassing-Self-Encrypting-Drives-SED-In-Enterprise-Environments-wp.pdf&quot;&gt;Bypassing Self-Encrypting Drives in Enterprise Environments&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;whole-disk-encryption&quot;&gt;Whole Disk Encryption&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;encrypts the OS and the user’s data&lt;/li&gt;
+  &lt;li&gt;boot and swap partitions can be decrypted
+    &lt;ul&gt;
+      &lt;li&gt;master boot record may still be vulnerable&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;SEDs can provide true full disk encryption&lt;/li&gt;
+  &lt;li&gt;partitions and containers on a disk can be encrypted&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://youtu.be/UPW1Hqvx6zo&quot;&gt;How Does Full Disk Encryption Work?&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.csoonline.com/article/3247707/full-disk-encryption-do-we-need-it.html&quot;&gt;Full Disk Encryption: Do We Need It?&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;file-encryption&quot;&gt;File Encryption&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.peazip.org/&quot;&gt;PeaZip&lt;/a&gt;
+    &lt;ul&gt;
+      &lt;li&gt;free&lt;/li&gt;
+      &lt;li&gt;archiver that offers encryption&lt;/li&gt;
+      &lt;li&gt;multi platform: Win, OSX, Linux&lt;/li&gt;
+      &lt;li&gt;multifactor authentication&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;https://www.peazip.org/peazip-help-faq.html#file_compression_questions_and_answers&quot;&gt;PeaZip FAQ&lt;br /&gt;
+&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.keka.io/en/&quot;&gt;Keka - MacOS&lt;/a&gt;
+    &lt;ul&gt;
+      &lt;li&gt;supports multiple compression formats&lt;/li&gt;
+      &lt;li&gt;defaults to AES-256&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;https://github.com/aonez/Keka/wiki&quot;&gt;Keka Wiki&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.aescrypt.com/&quot;&gt;AES Crypt&lt;/a&gt;
+    &lt;ul&gt;
+      &lt;li&gt;multiplatform&lt;/li&gt;
+      &lt;li&gt;files can only be decrypted by another instance of AES Crypt&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;https://www.aescrypt.com/documentation/&quot;&gt;AES Crypt Documentation&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://gnupg.org/&quot;&gt;GPG - The GNU Privacy Guard&lt;/a&gt;
+    &lt;ul&gt;
+      &lt;li&gt;can be encrypted with public keys&lt;/li&gt;
+      &lt;li&gt;public/private key encryption&lt;/li&gt;
+      &lt;li&gt;complete and free implementation of the OpenPGP standard&lt;/li&gt;
+      &lt;li&gt;multiplatform: Windows, MacOS, and Linux&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;https://www.dewinter.com/gnupg_howto/english/GPGMiniHowto.html&quot;&gt;GNU Privacy Guard Mini Howto&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;https://youtu.be/CEADq-B8KtI&quot;&gt;The Complete PGP Tutorial&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://security.stackexchange.com/questions/189587/should-i-encrypt-my-entire-hard-drive-or-only-a-partition&quot;&gt;Should You Encrypt Your Entire Hard Drive or Only a Partition?&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://youtu.be/Re8IK--TMdk&quot;&gt;How Does Individual File Encryption Work?&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.lifewire.com/how-to-encrypt-your-files-2487243&quot;&gt;How to Encrypt Your Files and Why You Should&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;what-does-disk-encryption-protect-you-from&quot;&gt;What Does Disk Encryption Protect You From?&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;protects you when adversaries gain physcial access to your device
+    &lt;ul&gt;
+      &lt;li&gt;all files on the disk will be unreadable without the key&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;protects data when:
+    &lt;ul&gt;
+      &lt;li&gt;its lost or stolen&lt;/li&gt;
+      &lt;li&gt;the device is seized by law enforcement&lt;/li&gt;
+      &lt;li&gt;the device is left unattended&lt;/li&gt;
+      &lt;li&gt;the device is sent in for hardware repair&lt;/li&gt;
+      &lt;li&gt;crossing borders&lt;/li&gt;
+      &lt;li&gt;you want to discard the data&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;maintains the integrity of all files on the filesystem
+    &lt;ul&gt;
+      &lt;li&gt;mitigates the effects of tampering&lt;/li&gt;
+      &lt;li&gt;can prevent the installation of malware&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://specopssoft.com/blog/what-are-the-benefits-of-full-disk-encryption/&quot;&gt;What Are The Benefits of Full Disk Encryption?&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;operating-systems-and-physical-security&quot;&gt;Operating Systems and Physical Security&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;provide very little protection against an adversary with physical access
+    &lt;ul&gt;
+      &lt;li&gt;password can be bypassed by booting into a live OS
+        &lt;ul&gt;
+          &lt;li&gt;the file system can be explored without the key&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.ibm.com/support/knowledgecenter/en/SSEP7J_10.2.1/com.ibm.swg.ba.cognos.crn_arch.10.2.1.doc/c_securing_the_operating_system.html&quot;&gt;Techniques for Securing the Operating System&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.howtogeek.com/186881/hard-disk-passwords-explained-should-you-set-one-to-secure-your-files/&quot;&gt;Hard Disk Passwords Explained&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.howtogeek.com/186235/how-to-secure-your-computer-with-a-bios-or-uefi-password/&quot;&gt;How to Secure Your Computer with a BIOS or UEFI Password&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.howtogeek.com/116569/htg-explains-how-windows-8s-secure-boot-feature-works-what-it-means-for-linux/&quot;&gt;How Secure Boot Works&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.amazon.com/Laptop-Security-Locks/b?ie=UTF8&amp;amp;node=3012924011&quot;&gt;Laptop Security Locks&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.pcmag.com/feature/232717/10-laptop-security-products&quot;&gt;10 Laptop Security Products&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;what-does-disk-encryption-not-protect-you-from&quot;&gt;What Does Disk Encryption Not Protect You From?&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;does protect against most threats
+    &lt;ul&gt;
+      &lt;li&gt;only protects against attacks that require physical access&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;no protection against:
+    &lt;ul&gt;
+      &lt;li&gt;traffic being observed&lt;/li&gt;
+      &lt;li&gt;ssl stripping&lt;/li&gt;
+      &lt;li&gt;browser attacks&lt;/li&gt;
+      &lt;li&gt;malware&lt;/li&gt;
+      &lt;li&gt;rootkits&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;no protection when your system is powered on and the key has been entered
+    &lt;ul&gt;
+      &lt;li&gt;the key is stored in memory&lt;/li&gt;
+      &lt;li&gt;anyone with access to memory can recover the key&lt;/li&gt;
+      &lt;li&gt;key can also be recovered shortly after shutdown&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;no protection from mandatory key disclosure
+    &lt;ul&gt;
+      &lt;li&gt;laws that force you to give up your key&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;https://en.wikipedia.org/wiki/Key_disclosure_law&quot;&gt;Key Disclosure Law&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;no protection from nation state tampering&lt;/li&gt;
+  &lt;li&gt;data is vulnerable if backed up and unencrypted&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.digitaluppercut.com/2018/12/why-full-disk-encryption-isnt-enough/&quot;&gt;Why Full Disk Encryption Isn’t Enough&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.secureidnews.com/news-item/exploiting-full-disk-encryption/&quot;&gt;Exploiting Full Disk Encryption&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.securityweek.com/researchers-break-full-disk-encryption-popular-ssds&quot;&gt;Researchers Break Full Disk Encryption of Popular SSDs&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.datanumen.com/blogs/6-advantages-disadvantages-full-disk-encryption-fde/&quot;&gt;Advantages and Disadvantages of Full Disk Encryption&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.csoonline.com/article/3301353/five-eyes-threatens-to-force-encryption-backdoors-says-privacy-is-not-absolute.html&quot;&gt;Five Eyes Threaten to Force Encryption Backdoors&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content><author><name>Justin Walters</name></author><summary type="html">A study guide introducing readers to file and disk encryption.</summary></entry><entry><title type="html">Welcome to Jekyll!</title><link href="http://localhost:4000/security/jekyll/update/welcome-to-jekyll/" rel="alternate" type="text/html" title="Welcome to Jekyll!" /><published>2019-09-18T23:27:36-04:00</published><updated>2019-09-18T23:27:36-04:00</updated><id>http://localhost:4000/security/jekyll/update/welcome-to-jekyll</id><content type="html" xml:base="http://localhost:4000/security/jekyll/update/welcome-to-jekyll/">&lt;p&gt;You’ll find this post in your &lt;code class=&quot;highlighter-rouge&quot;&gt;_posts&lt;/code&gt; directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run &lt;code class=&quot;highlighter-rouge&quot;&gt;jekyll serve&lt;/code&gt;, which launches a web server and auto-regenerates your site when a file is updated.&lt;/p&gt;
+
+&lt;p&gt;Jekyll requires blog post files to be named according to the following format:&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;YEAR-MONTH-DAY-title.MARKUP&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Where &lt;code class=&quot;highlighter-rouge&quot;&gt;YEAR&lt;/code&gt; is a four-digit number, &lt;code class=&quot;highlighter-rouge&quot;&gt;MONTH&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;DAY&lt;/code&gt; are both two-digit numbers, and &lt;code class=&quot;highlighter-rouge&quot;&gt;MARKUP&lt;/code&gt; is the file extension representing the format used in the file. After that, include the necessary front matter. Take a look at the source for this post to get an idea about how it works.&lt;/p&gt;
+
+&lt;p&gt;Jekyll also offers powerful support for code snippets:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;print_hi&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;nb&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Hi, &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;print_hi&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'Tom'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;#=&amp;gt; prints 'Hi, Tom' to STDOUT.&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Check out the &lt;a href=&quot;https://jekyllrb.com/docs/home&quot;&gt;Jekyll docs&lt;/a&gt; for more info on how to get the most out of Jekyll. File all bugs/feature requests at &lt;a href=&quot;https://github.com/jekyll/jekyll&quot;&gt;Jekyll’s GitHub repo&lt;/a&gt;. If you have questions, you can ask them on &lt;a href=&quot;https://talk.jekyllrb.com/&quot;&gt;Jekyll Talk&lt;/a&gt;.&lt;/p&gt;</content><author><name>Justin Walters</name></author><summary type="html">You’ll find this post in your _posts directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run jekyll serve, which launches a web server and auto-regenerates your site when a file is updated.</summary></entry></feed>

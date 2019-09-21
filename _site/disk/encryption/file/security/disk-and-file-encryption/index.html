@@ -1,0 +1,711 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.16.6 by Michael Rose
+  Copyright 2013-2019 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>File and Disk Encryption | Justin On Security</title>
+<meta name="description" content="A study guide introducing readers to file and disk encryption.">
+
+
+  <meta name="author" content="Justin Walters">
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="Justin On Security">
+<meta property="og:title" content="File and Disk Encryption">
+<meta property="og:url" content="http://localhost:4000/security/disk/encryption/file/security/disk-and-file-encryption/">
+
+
+  <meta property="og:description" content="A study guide introducing readers to file and disk encryption.">
+
+
+
+
+
+  <meta name="twitter:site" content="@jdwkong">
+  <meta name="twitter:title" content="File and Disk Encryption">
+  <meta name="twitter:description" content="A study guide introducing readers to file and disk encryption.">
+  <meta name="twitter:url" content="http://localhost:4000/security/disk/encryption/file/security/disk-and-file-encryption/">
+
+  
+    <meta name="twitter:card" content="summary">
+    
+  
+
+  
+
+
+
+  <meta property="article:published_time" content="2019-09-18T23:39:36-04:00">
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="http://localhost:4000/security/disk/encryption/file/security/disk-and-file-encryption/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "Justin Walters",
+      "url": "http://localhost:4000/security/"
+    
+  }
+</script>
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+<link href="/security/feed.xml" type="application/atom+xml" rel="alternate" title="Justin On Security Feed">
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/security/assets/css/main.css">
+
+<!--[if IE ]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single">
+    <nav class="skip-links">
+  <h2 class="screen-reader-text">Skip links</h2>
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/security/">
+          Justin On Security
+          <span class="site-subtitle">Version 1.0</span>
+        </a>
+        <ul class="visible-links"></ul>
+        
+        <button class="search__toggle" type="button">
+          <span class="visually-hidden">Toggle search</span>
+          <svg class="icon" width="16" height="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 15.99 16">
+            <path d="M15.5,13.12L13.19,10.8a1.69,1.69,0,0,0-1.28-.55l-0.06-.06A6.5,6.5,0,0,0,5.77,0,6.5,6.5,0,0,0,2.46,11.59a6.47,6.47,0,0,0,7.74.26l0.05,0.05a1.65,1.65,0,0,0,.5,1.24l2.38,2.38A1.68,1.68,0,0,0,15.5,13.12ZM6.4,2A4.41,4.41,0,1,1,2,6.4,4.43,4.43,0,0,1,6.4,2Z" transform="translate(-.01)"></path>
+          </svg>
+        </button>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person">
+
+  
+    <div class="author__avatar">
+      
+
+      
+        <img src="/security/assets/images/boom.jpg" alt="Justin Walters" itemprop="image">
+      
+    </div>
+  
+
+  <div class="author__content">
+    
+      <h3 class="author__name" itemprop="name">Justin Walters</h3>
+    
+    
+      <div class="author__bio" itemprop="description">
+        <p>Digital Defender</p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name">Baltimore, MD</span>
+        </li>
+      
+
+      
+        
+          
+            <li><a href="mailto:jdw_kong@protonmail.com" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i> Email</a></li>
+          
+        
+          
+        
+          
+            <li><a href="https://twitter.com/jdwkong" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-twitter-square" aria-hidden="true"></i> Twitter</a></li>
+          
+        
+          
+        
+          
+            <li><a href="https://github.com/jdw-kong" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+          
+        
+          
+        
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+  </div>
+
+
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="File and Disk Encryption">
+    <meta itemprop="description" content="A study guide introducing readers to file and disk encryption.">
+    <meta itemprop="datePublished" content="September 18, 2019">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">File and Disk Encryption
+</h1>
+          
+            <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  3 minute read
+</p>
+          
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+        <p>A study guide introducing readers to file and disk encryption.</p>
+
+<h3 id="what-is-disk-encryption-good-for">What is Disk Encryption Good for?</h3>
+<ul>
+  <li>protects data by converting it into an unreadable format
+    <ul>
+      <li>restricts access to only certain users</li>
+      <li>offers cryptographic protection of data on multiple mediums</li>
+    </ul>
+  </li>
+  <li><a href="https://theintercept.com/2015/04/27/encrypting-laptop-like-mean/">Encrypting Your Laptop Like You Mean It</a></li>
+  <li><a href="https://youtu.be/0NfvKci3WF0">Drive Encryption: Your Computer is at Risk</a></li>
+  <li><a href="https://youtu.be/clWEKq8CVOk">How Does Encryption Work?</a></li>
+  <li><a href="https://heimdalsecurity.com/blog/free-encryption-software-tools/">What is Data Encryption?</a></li>
+  <li><a href="https://youtu.be/12pQG8sHILY">Should You Encrypt Your Computer’s Hard Drive?</a></li>
+  <li><a href="https://youtu.be/_rBA4xRj5sY">Disk Encryption: Why You Still Need It</a></li>
+</ul>
+
+<h3 id="software-based-disk-encryption">Software Based Disk Encryption</h3>
+<ul>
+  <li><a href="https://wiki.archlinux.org/index.php/dm-crypt">dm-crypt</a> and <a href="https://gitlab.com/cryptsetup/cryptsetup/">LUKS: Linux Unified Key Setup</a></li>
+  <li><a href="https://www.veracrypt.fr/en/Home.html">VeraCrypt</a> - Windows, MacOS, and Linux</li>
+  <li><a href="https://support.apple.com/en-us/HT204837">FileVault2</a> - MacOS</li>
+  <li><a href="https://docs.microsoft.com/en-us/windows/security/information-protection/bitlocker/bitlocker-overview">Bitlocker</a> - Windows</li>
+  <li><a href="https://www.pcmag.com/article/347066/the-best-encryption-software">The Best Encryption Software for 2019</a></li>
+</ul>
+
+<h3 id="hardware-based-disk-encryption">Hardware Based Disk Encryption</h3>
+<ul>
+  <li>SED : <a href="https://youtu.be/sxfuCmzE5Ok">Self Encrypting Drives</a></li>
+  <li>some SSDs come with hardware encryption
+    <ul>
+      <li>always use a password</li>
+    </ul>
+  </li>
+  <li>can be effective when combined with other forms of encryption</li>
+  <li><a href="https://youtu.be/sxfuCmzE5Ok">Understanding Hardware Based Encryption</a></li>
+  <li><a href="https://www.pcworld.com/article/3004670/self-encrypting-drives-are-hardly-any-better-than-software-based-encryption.html">Self Encrypting Drives are Hardly Any Better Than Software-Based Encryption</a></li>
+  <li><a href="https://www.zdnet.com/article/flaws-in-self-encrypting-ssds-let-attackers-bypass-disk-encryption/">Flaws in Self Encrypting SSDs Let Attackers Bypass Disk Encryption</a></li>
+  <li><a href="https://www.blackhat.com/docs/eu-15/materials/eu-15-Boteanu-Bypassing-Self-Encrypting-Drives-SED-In-Enterprise-Environments-wp.pdf">Bypassing Self-Encrypting Drives in Enterprise Environments</a></li>
+</ul>
+
+<h3 id="whole-disk-encryption">Whole Disk Encryption</h3>
+<ul>
+  <li>encrypts the OS and the user’s data</li>
+  <li>boot and swap partitions can be decrypted
+    <ul>
+      <li>master boot record may still be vulnerable</li>
+    </ul>
+  </li>
+  <li>SEDs can provide true full disk encryption</li>
+  <li>partitions and containers on a disk can be encrypted</li>
+  <li><a href="https://youtu.be/UPW1Hqvx6zo">How Does Full Disk Encryption Work?</a></li>
+  <li><a href="https://www.csoonline.com/article/3247707/full-disk-encryption-do-we-need-it.html">Full Disk Encryption: Do We Need It?</a></li>
+</ul>
+
+<h3 id="file-encryption">File Encryption</h3>
+<ul>
+  <li><a href="https://www.peazip.org/">PeaZip</a>
+    <ul>
+      <li>free</li>
+      <li>archiver that offers encryption</li>
+      <li>multi platform: Win, OSX, Linux</li>
+      <li>multifactor authentication</li>
+      <li><a href="https://www.peazip.org/peazip-help-faq.html#file_compression_questions_and_answers">PeaZip FAQ<br />
+</a></li>
+    </ul>
+  </li>
+  <li><a href="https://www.keka.io/en/">Keka - MacOS</a>
+    <ul>
+      <li>supports multiple compression formats</li>
+      <li>defaults to AES-256</li>
+      <li><a href="https://github.com/aonez/Keka/wiki">Keka Wiki</a></li>
+    </ul>
+  </li>
+  <li><a href="https://www.aescrypt.com/">AES Crypt</a>
+    <ul>
+      <li>multiplatform</li>
+      <li>files can only be decrypted by another instance of AES Crypt</li>
+      <li><a href="https://www.aescrypt.com/documentation/">AES Crypt Documentation</a></li>
+    </ul>
+  </li>
+  <li><a href="https://gnupg.org/">GPG - The GNU Privacy Guard</a>
+    <ul>
+      <li>can be encrypted with public keys</li>
+      <li>public/private key encryption</li>
+      <li>complete and free implementation of the OpenPGP standard</li>
+      <li>multiplatform: Windows, MacOS, and Linux</li>
+      <li><a href="https://www.dewinter.com/gnupg_howto/english/GPGMiniHowto.html">GNU Privacy Guard Mini Howto</a></li>
+      <li><a href="https://youtu.be/CEADq-B8KtI">The Complete PGP Tutorial</a></li>
+    </ul>
+  </li>
+  <li><a href="https://security.stackexchange.com/questions/189587/should-i-encrypt-my-entire-hard-drive-or-only-a-partition">Should You Encrypt Your Entire Hard Drive or Only a Partition?</a></li>
+  <li><a href="https://youtu.be/Re8IK--TMdk">How Does Individual File Encryption Work?</a></li>
+  <li><a href="https://www.lifewire.com/how-to-encrypt-your-files-2487243">How to Encrypt Your Files and Why You Should</a></li>
+</ul>
+
+<h3 id="what-does-disk-encryption-protect-you-from">What Does Disk Encryption Protect You From?</h3>
+<ul>
+  <li>protects you when adversaries gain physcial access to your device
+    <ul>
+      <li>all files on the disk will be unreadable without the key</li>
+    </ul>
+  </li>
+  <li>protects data when:
+    <ul>
+      <li>its lost or stolen</li>
+      <li>the device is seized by law enforcement</li>
+      <li>the device is left unattended</li>
+      <li>the device is sent in for hardware repair</li>
+      <li>crossing borders</li>
+      <li>you want to discard the data</li>
+    </ul>
+  </li>
+  <li>maintains the integrity of all files on the filesystem
+    <ul>
+      <li>mitigates the effects of tampering</li>
+      <li>can prevent the installation of malware</li>
+    </ul>
+  </li>
+  <li><a href="https://specopssoft.com/blog/what-are-the-benefits-of-full-disk-encryption/">What Are The Benefits of Full Disk Encryption?</a></li>
+</ul>
+
+<h3 id="operating-systems-and-physical-security">Operating Systems and Physical Security</h3>
+<ul>
+  <li>provide very little protection against an adversary with physical access
+    <ul>
+      <li>password can be bypassed by booting into a live OS
+        <ul>
+          <li>the file system can be explored without the key</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><a href="https://www.ibm.com/support/knowledgecenter/en/SSEP7J_10.2.1/com.ibm.swg.ba.cognos.crn_arch.10.2.1.doc/c_securing_the_operating_system.html">Techniques for Securing the Operating System</a></li>
+  <li><a href="https://www.howtogeek.com/186881/hard-disk-passwords-explained-should-you-set-one-to-secure-your-files/">Hard Disk Passwords Explained</a></li>
+  <li><a href="https://www.howtogeek.com/186235/how-to-secure-your-computer-with-a-bios-or-uefi-password/">How to Secure Your Computer with a BIOS or UEFI Password</a></li>
+  <li><a href="https://www.howtogeek.com/116569/htg-explains-how-windows-8s-secure-boot-feature-works-what-it-means-for-linux/">How Secure Boot Works</a></li>
+  <li><a href="https://www.amazon.com/Laptop-Security-Locks/b?ie=UTF8&amp;node=3012924011">Laptop Security Locks</a></li>
+  <li><a href="https://www.pcmag.com/feature/232717/10-laptop-security-products">10 Laptop Security Products</a></li>
+</ul>
+
+<h3 id="what-does-disk-encryption-not-protect-you-from">What Does Disk Encryption Not Protect You From?</h3>
+<ul>
+  <li>does protect against most threats
+    <ul>
+      <li>only protects against attacks that require physical access</li>
+    </ul>
+  </li>
+  <li>no protection against:
+    <ul>
+      <li>traffic being observed</li>
+      <li>ssl stripping</li>
+      <li>browser attacks</li>
+      <li>malware</li>
+      <li>rootkits</li>
+    </ul>
+  </li>
+  <li>no protection when your system is powered on and the key has been entered
+    <ul>
+      <li>the key is stored in memory</li>
+      <li>anyone with access to memory can recover the key</li>
+      <li>key can also be recovered shortly after shutdown</li>
+    </ul>
+  </li>
+  <li>no protection from mandatory key disclosure
+    <ul>
+      <li>laws that force you to give up your key</li>
+      <li><a href="https://en.wikipedia.org/wiki/Key_disclosure_law">Key Disclosure Law</a></li>
+    </ul>
+  </li>
+  <li>no protection from nation state tampering</li>
+  <li>data is vulnerable if backed up and unencrypted</li>
+  <li><a href="https://www.digitaluppercut.com/2018/12/why-full-disk-encryption-isnt-enough/">Why Full Disk Encryption Isn’t Enough</a></li>
+  <li><a href="https://www.secureidnews.com/news-item/exploiting-full-disk-encryption/">Exploiting Full Disk Encryption</a></li>
+  <li><a href="https://www.securityweek.com/researchers-break-full-disk-encryption-popular-ssds">Researchers Break Full Disk Encryption of Popular SSDs</a></li>
+  <li><a href="https://www.datanumen.com/blogs/6-advantages-disadvantages-full-disk-encryption-fde/">Advantages and Disadvantages of Full Disk Encryption</a></li>
+  <li><a href="https://www.csoonline.com/article/3301353/five-eyes-threatens-to-force-encryption-backdoors-says-privacy-is-not-absolute.html">Five Eyes Threaten to Force Encryption Backdoors</a></li>
+</ul>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+
+
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> Categories: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/security/categories/#disk" class="page__taxonomy-item" rel="tag">disk</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/security/categories/#encryption" class="page__taxonomy-item" rel="tag">encryption</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/security/categories/#file" class="page__taxonomy-item" rel="tag">file</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/security/categories/#security" class="page__taxonomy-item" rel="tag">security</a>
+    
+    </span>
+  </p>
+
+
+        
+          <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2019-09-18T23:39:36-04:00">September 18, 2019</time></p>
+        
+      </footer>
+
+      <section class="page__share">
+  
+    <h4 class="page__share-title">Share on</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?via=jdwkong&text=File+and+Disk+Encryption%20http%3A%2F%2Flocalhost%3A4000%2Fsecurity%2Fdisk%2Fencryption%2Ffile%2Fsecurity%2Fdisk-and-file-encryption%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Fsecurity%2Fdisk%2Fencryption%2Ffile%2Fsecurity%2Fdisk-and-file-encryption%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2Fsecurity%2Fdisk%2Fencryption%2Ffile%2Fsecurity%2Fdisk-and-file-encryption%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/security/jekyll/update/welcome-to-jekyll/" class="pagination--pager" title="Welcome to Jekyll!
+">Previous</a>
+    
+    
+      <a href="/security/disk/encryption/attacks/disk-encryption-attacks/" class="pagination--pager" title="Disk Encryption Attacks
+">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h4 class="page__related-title">You may also enjoy</h4>
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/security/disk/encryption/attacks/disk-encryption-attacks/" rel="permalink">Disk Encryption Attacks
+</a>
+      
+    </h2>
+    
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  6 minute read
+</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">A study guide describing disk encryption attack and defense methods.
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/security/jekyll/update/welcome-to-jekyll/" rel="permalink">Welcome to Jekyll!
+</a>
+      
+    </h2>
+    
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  less than 1 minute read
+</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">You’ll find this post in your _posts directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different wa...</p>
+  </article>
+</div>
+
+        
+      </div>
+    </div>
+  
+  
+</div>
+
+    </div>
+
+    
+      <div class="search-content">
+        <div class="search-content__inner-wrap"><form class="search-content__form" onkeydown="return event.key != 'Enter';">
+    <label class="sr-only" for="search">
+      Enter your search term...
+    </label>
+    <input type="search" id="search" class="search-input" tabindex="-1" placeholder="Enter your search term..." />
+  </form>
+  <div id="results" class="results"></div></div>
+
+      </div>
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>Follow:</strong></li>
+    
+
+    
+      
+        
+          <li><a href="https://twitter.com/jdwkong" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-twitter-square" aria-hidden="true"></i> Twitter</a></li>
+        
+      
+        
+      
+        
+          <li><a href="https://github.com/jdw-kong" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+        
+      
+        
+      
+        
+      
+        
+      
+    
+
+    <li><a href="/security/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2019 Justin Walters. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/security/assets/js/main.min.js"></script>
+  <script src="https://kit.fontawesome.com/4eee35f757.js"></script>
+
+
+
+
+<script src="/security/assets/js/lunr/lunr.min.js"></script>
+<script src="/security/assets/js/lunr/lunr-store.js"></script>
+<script src="/security/assets/js/lunr/lunr-en.js"></script>
+
+
+
+
+
+
+
+  </body>
+</html>
